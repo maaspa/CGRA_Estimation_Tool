@@ -150,7 +150,8 @@ def get_latency_mem_cc(cgra):
     cgra.concurrent_accesses = group_dma_accesses(cgra)
     dependencies = track_dependencies(cgra)
     latency_cc = get_total_memory_access_cc(cgra, dependencies)
-    if "uniform_op_cc"in characterization_factors : return 1
+    if any(elem in characterization_factors for elem in ("uniform_op_cc", "dma_per_cell")):
+        return 1
     return latency_cc
 
 # Record the bank index used for each memory access 
