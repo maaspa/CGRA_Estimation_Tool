@@ -104,9 +104,6 @@ def select_latency_factors(characterization_factors):
             bus_type_cpu_loop_instrs[elem] = 0
     if "dma_per_cell" in characterization_factors:
         operation_latency_mapping = load_operation_characterization("latency_cc")
-        for elem in operation_latency_mapping:
-            if any(op in operation_latency_mapping for op in OPERATIONS_MEMORY_ACCESS):
-                operation_latency_mapping[elem] = 1
     return (operation_latency_mapping, bus_type_active_row_coef, bus_type_cpu_loop_instrs)
 # characterization_factors = ["uniform_op_cc"] 
 # characterization_factors = ["latency_cc"]
@@ -150,7 +147,8 @@ def get_latency_mem_cc(cgra):
     cgra.concurrent_accesses = group_dma_accesses(cgra)
     dependencies = track_dependencies(cgra)
     latency_cc = get_total_memory_access_cc(cgra, dependencies)
-    if "uniform_op_cc"in characterization_factors : return 1
+    if any(elem in characterization_factors for elem in ("uniform_op_cc", "dma_per_cell")):
+        return 1
     return latency_cc
 
 # Record the bank index used for each memory access 
