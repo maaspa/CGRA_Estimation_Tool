@@ -1,7 +1,3 @@
-# ESL-CGRA Simulator
-This notebook allows you to manage kernels, simulate them and generate assembly files that can the be integrated into the CGRA-X-HEEP flow.
-This simulator does not include the compilation of C code into CGRA-compatible assembly code. For that purpose refer to [SAT-MapIt](https://github.com/CristianTirelli/SAT-MapIt).
-
 # Structure
 It is divided into 3 main components:
 
@@ -11,7 +7,6 @@ Include the simulator per se and a set of tools to simplify the process of gener
 ### Kernel folders
 A kernel is a section of an application that wants to be accelerated in the CGRA.
 Each kernel has a folder with its name. All the files needed to run a simulation should be inside them and follow the naming convention detailed in [Creating a kernel](#creating-a-kernel). These include (but are not restricted to):
-* (optional) A file containing the `SAT-MapIt` output.
 * (optional) A hand-written assembly file.
 * (optional) A `memory.csv` file including the indexed values that the kernel can access from memory.
 

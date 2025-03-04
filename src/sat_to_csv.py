@@ -1,13 +1,11 @@
 import math
 import csv
 
-## Convert the output of SAT-MapIt into a csv file compatible with the simulator
 def convert(infile, outfile, version=""):
 
     outfile = outfile.split(".")[0] + "{}." + outfile.split(".")[-1]
     outfile = outfile.format(version)
 
-    # Read the input file (output of SAT-MapIt)
     with open(infile, "r") as f:
         lines = f.readlines()
 
