@@ -62,8 +62,6 @@ The index increments downwards.
 
 ### Instructions
 
-Instruction files can be generated automatically from the output of `SAT-MapIt` or a manually-written assembly file following the same structure, or can be created manually editing the `.csv` file.
-
 It should has the same number of columns as the CGRA and only as many rows as instructions + the header of each instruction.
 
 Each instruction is composed as follows (for a $2 \times 2$ CGRA):
